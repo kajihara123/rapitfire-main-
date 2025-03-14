@@ -43,5 +43,7 @@ void main(void)
 			PORTE.PODR.BIT.B7 = 0;
 		
 		}
-	}			
+	}		//大原が書き込みました
+
+	
 *///
