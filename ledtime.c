@@ -37,6 +37,7 @@ void ledTime(void)
 	if(g_gameMode == 1 && cnt % 31500 == 0){
 		LEDシフト
 		ゲーム状態ステータスを2に
+		cnt = 0;
 	}
 
 
