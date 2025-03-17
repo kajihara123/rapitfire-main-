@@ -44,21 +44,32 @@ void main(void)
 {	
 	int	d_sw3 = 1;				/* スイッチデータ */
 	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
+	int	myDate = 0;			/* 対戦中自分の連打回数を保管 */
+<<<<<<< HEAD
+	int	gameMode = 0;			/* ゲームモード*/		
+=======
+	signed char g_gameMode = 0;		/* ゲームモード*/		
+>>>>>>> b8958f8e512552f344ea817f4f40ccbe5f2e767b
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
-	signed char g_gameMode = 0;
+	char g_playerNum = 0;
+	
 							
 	
 	while (FOREVER) {
 		
+		g_gameMode = Excep_ICU_IRQ13();
 		d_sw3 = getSW(3);			/* スイッチ読み込み */
 			
 		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
 		    if(egf_sw3 == 0){			/* スイッチのエッジ変化処理が完了しているか？ */
 		    	g_myDate = count++;			/* 押し下げ回数カウント*/
+<<<<<<< HEAD
 			PORTE.PODR.BYTE = g_myDate;	/* LED表示 			*/
+=======
+			/* PORTE.PODR.BYTE = g_myDate;	 LED表示 			*/
+>>>>>>> b8958f8e512552f344ea817f4f40ccbe5f2e767b
 			egf_sw3 = 1;			/* スイッチのエッジ変化処理フラグを完了に設定 */
-		    }				
-		}else{
+			}
 			egf_sw3 = 0;			/* スイッチのエッジ変化処理フラグをクリア */							
 								
 	}
@@ -78,9 +89,10 @@ void main(void)
 =======================================================================*/
 void Excep_ICU_IRQ13(void)
 {
-	int	g_gameMode = 0;
+<<<<<<< HEAD
+	signed char	gameMode = 0;
 	
-	switch (g_gameMode) {
+	switch (gameMode) {
 		case 0:
 			ret = 
 			break;
@@ -90,10 +102,22 @@ void Excep_ICU_IRQ13(void)
 		case 2:
 			ret = 
 			break;
-		case -1:
+		default:
 			ret = 
 			break;
 	}
+=======
+	
+	switch (g_gameMode) {
+        int ret = 0;  // 戻り値用の変数
+
+		if ()
+		{
+			/* code */
+		}
+		
+    }
+>>>>>>> b8958f8e512552f344ea817f4f40ccbe5f2e767b
 	
 	return ret;
 }
@@ -114,13 +138,17 @@ int getSW(int sw)
 	int	ret = -1;
 	
 	switch (sw) {
-		case 3:
-			ret = PORT0.PIDR.BIT.B5;
-			break;
-		case 4:
-			ret = PORT0.PIDR.BIT.B7;
-			break;
-	}
+        case 3:
+            // スイッチ3の状態を読み取る。
+            ret = (SW3_PIN_STATUS == 0) ? 0 : 1;  // SW3が押されていれば0、押されていなければ1
+            break;
+        case 4:
+            // スイッチ4の状態を読み取る。
+            ret = (SW4_PIN_STATUS == 0) ? 0 : 1;  // SW4が押されていれば0、押されていなければ1
+            break;
+        default:
+            break;
+    }
 	
 	return ret;
 }

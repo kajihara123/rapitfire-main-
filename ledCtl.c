@@ -1,28 +1,35 @@
-/***********************************************************************/
-/*                                                                     */
-/*  FILE        :Main.c or Main.cpp                                    */
-/*  DATE        :Mon, Mar 17, 2025                                     */
-/*  DESCRIPTION :Main Program                                          */
-/*  CPU TYPE    :                                                      */
-/*                                                                     */
-/*  NOTE:THIS IS A TYPICAL EXAMPLE.                                    */
-/*                                                                     */
-/***********************************************************************/
-
+/*=====================================================
+Project		: Renda game
+File		: ledCtl.c
+Function	: 勝敗時のled制御
+Revision	: 1.00 2025/03/17
+Copyright(c):
+=====================================================*/
 #include	"iodefine.h"
 
-void main(void);
-//int win_or_lose(void);
+void ledRes(void);
+int win_or_lose(void);
 void portSwitch(void);
 
-void ledCtl(void)
+/*=====================================================
+Func Name	: ledRes
+Function	: ゲームの勝敗判定によってLEDの点灯位置を制御する
+Param Input	: None
+Param Output: None
+Return Val	: None
+Input Inf	: None
+Output Inf	: None
+Note		:
+Revision	: 1.00 2025/03/17
+=====================================================*/
+
+void ledRes(void)
 {
 	int decision = 0;
 	
 	portSwitch();
 	
-	while(1) {
-//		decision = win_or_lose();
+		decision = win_or_lose();
 
 		switch(decision) {
 			case 0:
@@ -35,10 +42,19 @@ void ledCtl(void)
 				PORTE.PODR.BYTE = 0xF0;
 				break;
 		}
-	}
-	
 }
 
+/*=====================================================
+Func Name	: win_or_lose
+Function	: ゲームの勝敗判定を行う
+Param Input	: None
+Param Output: decision
+Return Val	: 0 = 負け, 1 = 勝ち, 2 = 引き分け
+Input Inf	: g_myDate, g_pairDate
+Output Inf	: None
+Note		:
+Revision	: 1.00 2025/03/17
+=====================================================*/
 
 int win_or_lose(void)
 {
@@ -51,9 +67,20 @@ int win_or_lose(void)
 	}else if(g_myDate == g_pairDate) {
 		res = 2;
 	}
+	return res;
 }
 
-
+/*=====================================================
+Func Name	: portSwitch
+Function	: ポートの設定を行う
+Param Input	: None
+Param Output: None
+Return Val	: None
+Input Inf	: None
+Output Inf	: None
+Note		:
+Revision	: 1.00 2025/03/17
+=====================================================*/
 
 void portSwitch(void)
 {
