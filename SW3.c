@@ -10,6 +10,7 @@
 /***** include *****/
 #include	"iodefine.h"
 #include    <stdio.h>
+#include "SW3.h"
 
 /***** define *****/
 #define		FOREVER	1
