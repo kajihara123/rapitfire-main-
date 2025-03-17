@@ -57,8 +57,8 @@ void main(void)
 			
 		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
 		    if(egf_sw3 == 0){			/* スイッチのエッジ変化処理が完了しているか？ */
-		    	myDate = count++;			/* 押し下げ回数カウント*/
-			PORTE.PODR.BYTE = g_myDate;	/* LED表示 			*/
+		    	g_myDate = count++;			/* 押し下げ回数カウント*/
+			/* PORTE.PODR.BYTE = g_myDate;	 LED表示 			*/
 			egf_sw3 = 1;			/* スイッチのエッジ変化処理フラグを完了に設定 */
 		    }				
 		}else{
@@ -84,19 +84,23 @@ void Excep_ICU_IRQ13(void)
 	signed char g_gameMode = 0;
 	
 	switch (g_gameMode) {
-		case 0:
-			ret = 
-			break;
-		case 1:
-			ret = 
-			break;
-		case 2:
-			ret = 
-			break;
-		default:
-			ret = 
-			break;
-	}
+        case 0:
+            // ゲームモード0の場合の処理
+            ret = 0;
+            break;
+        case 1:
+            // ゲームモード1の場合の処理
+            ret = 1;
+            break;
+        case 2:
+            // ゲームモード2の場合の処理
+            ret = 2;
+            break;
+        default:
+            // 他のゲームモードの処理
+            ret = -1;
+            break;
+    }
 	
 	return ret;
 }
@@ -117,13 +121,17 @@ int getSW(int sw)
 	int	ret = -1;
 	
 	switch (sw) {
-		case 3:
-			ret = 
-			break;
-		case 4:
-			ret = 
-			break;
-	}
+        case 3:
+            // スイッチ3の状態を読み取る。
+            ret = (SW3_PIN_STATUS == 0) ? 0 : 1;  // SW3が押されていれば0、押されていなければ1
+            break;
+        case 4:
+            // スイッチ4の状態を読み取る。
+            ret = (SW4_PIN_STATUS == 0) ? 0 : 1;  // SW4が押されていれば0、押されていなければ1
+            break;
+        default:
+            break;
+    }
 	
 	return ret;
 }
