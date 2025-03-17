@@ -2,6 +2,6 @@
 #define SW3_H
 
 void main(void);
-void Excep_ICU_IRQ13(void);
+void sw3Clt(void);
 
 #endif
