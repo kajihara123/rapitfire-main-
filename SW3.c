@@ -44,14 +44,12 @@ void main(void)
 {	
 	int	d_sw3 = 1;				/* スイッチデータ */
 	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
-<<<<<<< HEAD:騾｣謇薙ご繝ｼ繝逕ｨSW3.c
 	int	myDate = 0;			/* 対戦中自分の連打回数を保管 */
-	int	gameMode = 0;			/* ゲームモード*/		
-=======
+	signed char g_gameMode = 0;		/* ゲームモード*/		
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
+	char g_playerNum = 0;
 	
 							
->>>>>>> e9ffa0428b5e01b5d239f5c5b13c958c8f21bcbd:SW3.c
 	
 	while (FOREVER) {
 		
