@@ -40,26 +40,24 @@ void sw3Clt(void);
 
 void main(void)
 {	
-	int	d_sw3 = 1;				/* スイッチデータ */
-	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
-	int	myDate = 0;			/* 対戦中自分の連打回数を保管 */
+	int	myDate = 0;					/* 対戦中自分の連打回数を保管 */
 	signed char g_gameMode = 0;		/* ゲームモード*/		
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
-	char g_playerNum = 0;
+	char g_playerNum = 0;			/*現在のプレイヤー番号*/
 
-	PORT0.PDR.BYTE = 0;
-	PORTJ.PDR.BIT.B3 = 1;
+	PORT0.PDR.BYTE = 0;				
+	PORTJ.PDR.BIT.B3 = 1;			/*sw読み込み*/
 	PORTJ.PODR.BIT.B3 = 1;
 							
 	
 	while (FOREVER) {
-		sw3Clt();
+		sw3Clt();					
 	}
 }
 
 /*=======================================================================
 関数名		: void sw3Clt(void)
-機能		: 指定したスイッチの状態(status) 取得
+機能		: swの主な動作
 入力引数説明	: スイッチ番号
 出力引数説明	: None
 戻り値		: status 
@@ -74,10 +72,10 @@ void sw3Clt(void)
 			/*ゲームステータスを0にする*/
 			if (g_gameMode == 2){
 				g_myDate = g_myDate + 1;		
-				/*ゲームモードを2にする*/	
+			/*ゲームモードを2にする*/	
 			}	
 			if (g_gameMode == 3){
-				g_playerNum = 1;
+				g_playerNum = 1;	/*自分のプレーヤー番号の選択*/
 			}		
 	}
 }
