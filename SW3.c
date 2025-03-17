@@ -45,11 +45,7 @@ void main(void)
 	int	d_sw3 = 1;				/* スイッチデータ */
 	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
 	int	myDate = 0;			/* 対戦中自分の連打回数を保管 */
-<<<<<<< HEAD
-	int	gameMode = 0;			/* ゲームモード*/		
-=======
 	signed char g_gameMode = 0;		/* ゲームモード*/		
->>>>>>> b8958f8e512552f344ea817f4f40ccbe5f2e767b
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
 	char g_playerNum = 0;
 	
@@ -63,11 +59,7 @@ void main(void)
 		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
 		    if(egf_sw3 == 0){			/* スイッチのエッジ変化処理が完了しているか？ */
 		    	g_myDate = count++;			/* 押し下げ回数カウント*/
-<<<<<<< HEAD
-			PORTE.PODR.BYTE = g_myDate;	/* LED表示 			*/
-=======
 			/* PORTE.PODR.BYTE = g_myDate;	 LED表示 			*/
->>>>>>> b8958f8e512552f344ea817f4f40ccbe5f2e767b
 			egf_sw3 = 1;			/* スイッチのエッジ変化処理フラグを完了に設定 */
 			}
 			egf_sw3 = 0;			/* スイッチのエッジ変化処理フラグをクリア */							
@@ -89,36 +81,21 @@ void main(void)
 =======================================================================*/
 void Excep_ICU_IRQ13(void)
 {
-<<<<<<< HEAD
-	signed char	gameMode = 0;
 	
-	switch (gameMode) {
-		case 0:
-			ret = 
-			break;
-		case 1:
-			ret = 
-			break;
-		case 2:
-			ret = 
-			break;
-		default:
-			ret = 
-			break;
-	}
-=======
-	
-	switch (g_gameMode) {
         int ret = 0;  // 戻り値用の変数
 
-		if ()
-		{
-			/* code */
+		if (d_sw3 == 1){
+			/*ゲームステータスを0にする*/
+			if (g_gameMode == 1){
+				myDate = count++;		
+				/*ゲームモードを2にする*/
+				if (g_gameMode == 3){
+					char g_playerNum = 1;
+				}
+				
+			}
+			
 		}
-		
-    }
->>>>>>> b8958f8e512552f344ea817f4f40ccbe5f2e767b
-	
 	return ret;
 }
 
