@@ -17,7 +17,7 @@ void initCMT0(void)
 	IPR(CMT0, CMI0) = 1; 	/* CMT0 CMI0割込み優先レベル設定	*/
 	IEN(CMT0, CMI0) = 1; 	/* CMT0 CMI0割込み要求許可		*/
 
-	CMT.CMSTR0.BIT.STR0 = 0;	/* CMT0カウント動作開始			*/
+	CMT.CMSTR0.BIT.STR0 = 1;	/* CMT0カウント動作開始			*/
 }
 
 
@@ -39,7 +39,7 @@ void initCMT1(void)
 	IPR(CMT1, CMI1) = 1;		/* CMT1 CMI1割込み優先レベル設定	*/
 	IEN(CMT1, CMI1) = 1;		/* CMT1 CMI1割込み要求許可		*/
 
-	CMT.CMSTR0.BIT.STR1 = 0;	/* CMT1カウント */
+	CMT.CMSTR0.BIT.STR1 = 0;	/* CMT1カウント最初はストップ */
 }
 
 void waitCmt0(void)
