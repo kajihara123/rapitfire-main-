@@ -34,8 +34,8 @@ void main(void)
 {	
 	int	d_sw3 = 1;				/* スイッチデータ */
 	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
-	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
-							
+	int	myDate = 0;			/* 対戦中自分の連打回数を保管 */
+	int	gameMode = 0;			/* ゲームモード*/		
 	
 	while (FOREVER) {
 		
@@ -43,7 +43,7 @@ void main(void)
 			
 		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
 		    if(egf_sw3 == 0){			/* スイッチのエッジ変化処理が完了しているか？ */
-		    	g_myDate = count++;			/* 押し下げ回数カウント*/
+		    	myDate = count++;			/* 押し下げ回数カウント*/
 			PORTE.PODR.BYTE = g_myDate;	/* LED表示 			*/
 			egf_sw3 = 1;			/* スイッチのエッジ変化処理フラグを完了に設定 */
 		    }				
@@ -79,7 +79,7 @@ void Excep_ICU_IRQ13(void)
 		case 2:
 			ret = 
 			break;
-		case -1:
+		default:
 			ret = 
 			break;
 	}
@@ -104,10 +104,10 @@ int getSW(int sw)
 	
 	switch (sw) {
 		case 3:
-			ret = PORT0.PIDR.BIT.B5;
+			ret = 
 			break;
 		case 4:
-			ret = PORT0.PIDR.BIT.B7;
+			ret = 
 			break;
 	}
 	
