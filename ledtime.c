@@ -34,7 +34,7 @@ void ledTime(void)
 
     /*ゲーム開始前のカウントダウン（g_gameMode == 1）*/
     if (g_gameMode == 1) {                     
-        if (cnt % 5000 == 0) {                      /*cntが10000回進んだらLEDをシフト*/
+        if (cnt % 100 == 0) {                      /*cntが10000回進んだらLEDをシフト*/
             PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;   /*LEDを1ビットシフト*/
             if (PORTE.PIDR.BYTE == 0x00) {          /*カウントダウンが終わったら次に進む*/
                 g_gameMode = 2;                     /*ゲームモードを2に変更*/
@@ -47,7 +47,7 @@ void ledTime(void)
     if (g_gameMode == 2) {
         if(ver == 0){}                                /*１回目のループは無視*/
         if(ver > 0){                                  /*２回目以降2.5秒ごとに1ビットシフト*/
-            if (cnt % 12000 == 0) {                 
+            if (cnt % 250 == 0) {                 
                 PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;   /*LEDを1ビットシフト*/
                 if (PORTE.PIDR.BYTE == 0x00) {          /*LEDのシフトが終わったら、次に進む*/
                     g_gameMode = 3;                     /*ゲームモードを3に変更*/
