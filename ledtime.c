@@ -1,4 +1,24 @@
+/*=====================================================
+Project		: Renda game
+File		: ledTime.c
+Function	: ゲームスタート時の合図と時間計測
+Revision	: 1.00 2025/03/17
+Copyright(c):
+=====================================================*/
+
 #include "iodefine.h"
+
+/*=====================================================
+Func Name	: ledTime
+Function	: ゲーム状態ステータスに応じて合図と計測を行う
+Param Input	: None
+Param Output: None
+Return Val	: None
+Input Inf	: None
+Output Inf	: None
+Note		:
+Revision	: 1.00 2025/03/17
+=====================================================*/
 
 void ledTime(void)
 {
@@ -37,7 +57,7 @@ void ledTime(void)
 
                 // LEDのシフトが終わったら、次に進む
                 if (PORTE.PIDR.BYTE == 0x00) {
-                    g_gameMode = 3;  // ゲームモードを3に変更（終了）
+                    g_gameMode = 3;  // ゲームモードを3に変更
                 }
             }
         }
@@ -46,29 +66,3 @@ void ledTime(void)
 
     cnt++;  // カウントアップ
 }
-
-	/*
-
-	cnt++;
-
-	--------------------------------------
-	開始前カウントダウン
-	--------------------------------------
-	if(g_gameMode == 1 && cnt % 31500 == 0){
-
-        PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;
-		cnt = 0;
-	}
-
-
-	---------------------------------------
-	ゲーム中カウントダウン
-	-------------------------------------
-	if(cnt % 78750 == 0){
-		PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;
-		cnt = 0;
-	}
-
-	g_gamemode = 3;
-	*/
-
