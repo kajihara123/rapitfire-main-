@@ -26,9 +26,6 @@ int main(void)
                 g_gameMode = 2;  // ゲームモードを2に変更
                 PORTE.PODR.BYTE = 0xFF;  // 全LED点灯
             }
-
-            value++;  // カウントアップ
-            cnt = 0;  // カウントリセット
         }
     }
 
