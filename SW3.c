@@ -41,7 +41,6 @@ void sw3Clt(void);
 
 void main(void)
 {	
-	int	myDate = 0;					/* 対戦中自分の連打回数を保管 */
 	signed char g_gameMode = 0;		/* ゲームモード*/		
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
 	char g_playerNum = 0;			/*現在のプレイヤー番号*/
