@@ -44,26 +44,23 @@ void main(void)
 {	
 	int	d_sw3 = 1;				/* スイッチデータ */
 	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
-<<<<<<< HEAD:騾｣謇薙ご繝ｼ繝逕ｨSW3.c
 	int	myDate = 0;			/* 対戦中自分の連打回数を保管 */
 	int	gameMode = 0;			/* ゲームモード*/		
-=======
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
 	signed char g_gameMode = 0;
 							
->>>>>>> e9ffa0428b5e01b5d239f5c5b13c958c8f21bcbd:SW3.c
 	
 	while (FOREVER) {
 		
+		g_gameMode = Excep_ICU_IRQ13();
 		d_sw3 = getSW(3);			/* スイッチ読み込み */
 			
 		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
 		    if(egf_sw3 == 0){			/* スイッチのエッジ変化処理が完了しているか？ */
-		    	myDate = count++;			/* 押し下げ回数カウント*/
+		    	g_myDate = count++;			/* 押し下げ回数カウント*/
 			PORTE.PODR.BYTE = g_myDate;	/* LED表示 			*/
 			egf_sw3 = 1;			/* スイッチのエッジ変化処理フラグを完了に設定 */
-		    }				
-		}else{
+			}
 			egf_sw3 = 0;			/* スイッチのエッジ変化処理フラグをクリア */							
 								
 	}
@@ -83,9 +80,9 @@ void main(void)
 =======================================================================*/
 void Excep_ICU_IRQ13(void)
 {
-	int	g_gameMode = 0;
+	signed char	gameMode = 0;
 	
-	switch (g_gameMode) {
+	switch (gameMode) {
 		case 0:
 			ret = 
 			break;
