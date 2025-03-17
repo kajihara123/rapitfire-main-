@@ -17,7 +17,7 @@
 
 /***** prototype *****/
 void main(void);
-void Excep_ICU_IRQ13(void);
+void sw3Clt(void);
 int getSW(int sw);
 /*=======================================================================
 関数名		: main関数
@@ -53,7 +53,7 @@ void main(void)
 	
 	while (FOREVER) {
 		
-		g_gameMode = Excep_ICU_IRQ13();
+		void sw3Clt(void);
 		d_sw3 = getSW(3);			/* スイッチ読み込み */
 			
 		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
