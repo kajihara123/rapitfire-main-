@@ -9,11 +9,6 @@ static char g_errorHex[3] = {0x79, 0x50, 0x50};
 
 
 
-g_playerNum = 1;
-g_myData = 1111;
-g_pairData = 1000;
-
-
 
 
 void init7SEG(void)
