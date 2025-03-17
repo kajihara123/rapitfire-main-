@@ -49,23 +49,14 @@ void main(void)
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
 	char g_playerNum = 0;
 	
+	PORT0.PDR.BYTE = 0;
+	PORTJ.PDR.BIT.B3 = 1;
+	PORTJ.PODR.BIT.B3 = 1;
 							
 	
 	while (FOREVER) {
-		
-		void sw3Clt(void);
-		d_sw3 = getSW(3);			/* スイッチ読み込み */
-			
-		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
-		    if(egf_sw3 == 0){			/* スイッチのエッジ変化処理が完了しているか？ */
-		    	g_myDate = count++;			/* 押し下げ回数カウント*/
-			PORTE.PODR.BYTE = g_myDate;	 /*LED表示 			*/
-			egf_sw3 = 1;			/* スイッチのエッジ変化処理フラグを完了に設定 */
-			}
-			egf_sw3 = 0;			/* スイッチのエッジ変化処理フラグをクリア */							
-								
+		sw3Clt();
 	}
-}
 }
 
 /*=======================================================================
@@ -93,33 +84,4 @@ void sw3Clt(void)
 	}
 }
 
-/*=======================================================================
-関数名		: int getSW(int sw)
-機能		: 指定したスイッチの状態(status) 取得
-入力引数説明	: スイッチ番号
-出力引数説明	: None
-戻り値		: status 
-入力情報	: None
-出力情報	: None
-特記事項	: 
-修正履歴	: 
-=======================================================================*/
-int getSW(int sw)
-{
-	int	ret = -1;
-	
-	switch (sw) {
-        case 3:
-            // スイッチ3の状態を読み取る。
-            ret = (SW3_PIN_STATUS == 0) ? 0 : 1;  // SW3が押されていれば0、押されていなければ1
-            break;
-        case 4:
-            // スイッチ4の状態を読み取る。
-            ret = (SW4_PIN_STATUS == 0) ? 0 : 1;  // SW4が押されていれば0、押されていなければ1
-            break;
-        default:
-            break;
-    }
-	
-	return ret;
-}
+
