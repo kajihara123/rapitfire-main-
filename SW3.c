@@ -12,12 +12,7 @@
 #include    <stdio.h>
 #include "SW3.h"
 
-/***** define *****/
-#define		FOREVER	1
 
-/***** prototype *****/
-void main(void);
-void sw3Clt(void);
 /*=======================================================================
 関数名		: main関数
 機能		: メイン関数
@@ -39,7 +34,7 @@ void sw3Clt(void);
 
 
 
-void main(void)
+void (void)
 {	
 	signed char g_gameMode = 0;		/* ゲームモード*/		
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
