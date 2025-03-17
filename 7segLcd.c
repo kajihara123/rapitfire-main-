@@ -10,6 +10,7 @@ static char g_errorHex[3] = {0x79, 0x50, 0x50};
 
 
 
+
 void init7SEG(void)
 {
 	PORTE.PODR.BYTE   = 0x00;	/* PE0-PE7 OFF                     */
@@ -30,9 +31,10 @@ void displayHits(void)
 	processHits();
 	
 	preparat7seg();
+	
 
 	if (pos < 4) {
-		PORTD.PODR.BYTE |= 0x80 >> pos;
+		PORTD.PODR.BYTE |= 0x40 >> pos;
 	}
 	
 	PORTE.PODR.BYTE = g_hexNum[g_digit[pos]];
@@ -69,8 +71,8 @@ void displayError(void)
 	
 	preparat7seg();
 	
-	if (pos < 4) {
-		PORTD.PODR.BYTE |= 0x80 >> pos;
+	if (pos < 3) {
+		PORTD.PODR.BYTE |= 0x20 >> pos;
 	}
 	
 	if(pos < 3){
@@ -78,7 +80,7 @@ void displayError(void)
 	}
 	
 	pos++;
-	if (pos > 3) {
+	if (pos > 2) {
 		pos = 0;
 	}
 }
