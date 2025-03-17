@@ -6,6 +6,7 @@ Revision	: 1.00 2025/03/17
 Copyright(c):
 =====================================================*/
 #include	"iodefine.h"
+#include	"cmn.h"
 
 void ledRes(void);
 int win_or_lose(void);
@@ -28,19 +29,19 @@ void ledRes(void)
 	int decision = 0;
 	
 	portSwitch();
-	
-		decision = win_or_lose();
+	decision = win_or_lose();
 
-		switch(decision) {
-			case 0:
-				PORTE.PODR.BYTE = 0x00;
-				break;
-			case 1:
-				PORTE.PODR.BYTE = 0xFF;
-				break;
-			case 2:
-				PORTE.PODR.BYTE = 0xF0;
-				break;
+	/*判定結果によってLEDの点灯場所を管理*/
+	switch(decision) {
+		case 0:
+			PORTE.PODR.BYTE = 0x00;
+			break;
+		case 1:
+			PORTE.PODR.BYTE = 0xFF;
+			break;
+		case 2:
+			PORTE.PODR.BYTE = 0xF0;
+			break;
 		}
 }
 
@@ -60,12 +61,12 @@ int win_or_lose(void)
 {
 	int res;
 	
-	if(g_myDate < g_pairDate) {
-		res = 0;
-	}else if(g_pairDate < g_myDate) {
-		res = 1;
-	}else if(g_myDate == g_pairDate) {
-		res = 2;
+	if(g_myDate < g_pairDate) {				//g_myDataがg_pairDataより小さい場合
+		res = 0;							//負け
+	}else if(g_pairDate < g_myDate) {		//g_pairDataがg_myDataより小さい場合
+		res = 1;							//勝ち
+	}else if(g_myDate == g_pairDate) {		//g_myDataとg_pairDataの数値が同じ場合
+		res = 2;							//引き分け
 	}
 	return res;
 }
@@ -78,15 +79,16 @@ Param Output: None
 Return Val	: None
 Input Inf	: None
 Output Inf	: None
-Note		:
+Note		: None
 Revision	: 1.00 2025/03/17
 =====================================================*/
 
+/*7SEG使用時にLEDの出力を切られているので再設定*/
 void portSwitch(void)
 {
-	PORTD.PDR.BYTE   = 0x00;
+	PORTD.PDR.BYTE   = 0x00;			
 	
-	PORTJ.PDR.BIT.B3  	= 1;
+	PORTJ.PDR.BIT.B3  	= 1;			
 	PORTE.PDR.BYTE 		= 0xFF;
 	
 	PORTJ.PODR.BIT.B3 	= 1;
