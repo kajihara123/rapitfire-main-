@@ -12,8 +12,6 @@ int ledTime(void)
     PORTE.PODR.BYTE = 0x00;   // 初期状態: LEDは全て消灯
     PORTE.PODR.BYTE = ledShift;
 
-    while(1){
-
     // ゲーム開始前のカウントダウン（g_gameMode == 1）
     if (g_gameMode == 1) {
         // cntが10000回進んだらLEDをシフト
@@ -44,7 +42,6 @@ int ledTime(void)
     }
 
     cnt++;  // カウントアップ
-    }
 }
 
 	/*
