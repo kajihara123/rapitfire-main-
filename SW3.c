@@ -9,6 +9,7 @@
 
 /***** include *****/
 #include	"iodefine.h"
+#include    <stdio.h>
 #include	"initBASE.h"
 
 /***** define *****/
@@ -29,6 +30,16 @@ int getSW(int sw);
 特記事項	: 
 修正履歴	: 
 =======================================================================*/
+
+// typedef struct {
+//     signed char is_initialized : 0;  // 初期化済みフラグ
+//     signed char is_running : 2;      // 実行中フラグ
+//     signed char is_error : 3;        // エラーフラグ
+// } g_gameMode;
+
+signed char g_gameMode;
+
+
 
 void main(void)
 {	
