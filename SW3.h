@@ -3,6 +3,5 @@
 
 void main(void);
 void Excep_ICU_IRQ13(void);
-int getSW(int sw);
 
 #endif

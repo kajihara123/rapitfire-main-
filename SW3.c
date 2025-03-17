@@ -10,7 +10,6 @@
 /***** include *****/
 #include	"iodefine.h"
 #include    <stdio.h>
-#include	"initBASE.h"
 
 /***** define *****/
 #define		FOREVER	1
@@ -18,7 +17,6 @@
 /***** prototype *****/
 void main(void);
 void sw3Clt(void);
-int getSW(int sw);
 /*=======================================================================
 関数名		: main関数
 機能		: メイン関数
@@ -48,7 +46,7 @@ void main(void)
 	signed char g_gameMode = 0;		/* ゲームモード*/		
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
 	char g_playerNum = 0;
-	
+
 	PORT0.PDR.BYTE = 0;
 	PORTJ.PDR.BIT.B3 = 1;
 	PORTJ.PODR.BIT.B3 = 1;
