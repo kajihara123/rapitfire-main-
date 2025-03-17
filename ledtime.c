@@ -4,7 +4,7 @@ signed char g_gameMode = 1; // ゲームモードの初期状態
 
 int main(void)
 {
-    int cnt = 0;               /* カウントダウンと時間計測用変数 */
+    static int cnt = 0;               /* カウントダウンと時間計測用変数 */
     static int value = 0;      // カウントダウン用の変数
     static int ledShift = 0x07;  // LEDの初期状態（3つのLEDが点灯）
     PORTJ.PDR.BIT.B3 = 1; 
