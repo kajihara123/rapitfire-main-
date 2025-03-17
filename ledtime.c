@@ -1,8 +1,6 @@
 #include "iodefine.h"
 
-signed char g_gameMode = 1; // ゲームモードの初期状態
-
-int main(void)
+void ledTime(void)
 {
     static int cnt = 0;               /* カウントダウンと時間計測用変数 */
     static int value = 0;      // カウントダウン用の変数
@@ -71,4 +69,4 @@ int main(void)
 
 	g_gamemode = 3;
 	*/
-}
+
