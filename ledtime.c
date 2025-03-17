@@ -1,42 +1,55 @@
-#include"iodefine.h"
+#include "iodefine.h"
 
-void ledTime(void)
+signed char g_gameMode = 1; // ゲームモードの初期状態
+
+int main(void)
 {
-	int cnt =0;                    	/*カウントダウンと時間計測用変数*/
-	int weight = 0;                 /*タイマカウンタ用ウェイト*/
-	PORTJ.PDR.BIT.B3 = 1; 
-	PORTJ.PODR.BIT.B3 = 1;
-	
-	PORTE.PDR.BYTE = 0xFF;
-	PORTE.PODR.BYTE = 0x00;
+    int cnt = 0;               /* カウントダウンと時間計測用変数 */
+    static int value = 0;      // カウントダウン用の変数
+    static int ledShift = 0x07;  // LEDの初期状態（3つのLEDが点灯）
+    PORTJ.PDR.BIT.B3 = 1; 
+    PORTJ.PODR.BIT.B3 = 1;
+    
+    PORTE.PDR.BYTE = 0xFF;    // ポートEを出力に設定
+    PORTE.PODR.BYTE = 0x00;   // 初期状態: LEDは全て消灯
 
-    PORTE.PODR.BYTE = 0x07;	
-	cnt++;
+    // ゲーム開始前のカウントダウン（g_gameMode == 1）
+    if (g_gameMode == 1) {
+        // cntが31500回進んだらLEDをシフト
+        if (cnt % 31500 == 0) {
+            // 3, 2, 1 カウントダウン
+            PORTE.PODR.BYTE = ledShift;  // LEDの状態を変更
+            ledShift >>= 1;  // LEDを1ビットシフト
 
-	/*--------------------------------------
-	開始前カウントダウン
-	--------------------------------------*/
-	if(g_gameMode == 1 && cnt % 31500 == 0){
-		
-		PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;
-		ゲーム状態ステータスを2に
-		cnt = 0;
-	}
+            // カウントダウンが終わったら次に進む
+            if (ledShift == 0x00) {  
+                g_gameMode = 2;  // ゲームモードを2に変更
+                PORTE.PODR.BYTE = 0xFF;  // 全LED点灯
+            }
 
+            value++;  // カウントアップ
+            cnt = 0;  // カウントリセット
+        }
+    }
 
-	/*---------------------------------------
-	ゲーム中カウントダウン
-	---------------------------------------*/
-	if(cnt % 78750 == 0){
-		LEDシフト
-		LEDが全消灯したらゲーム終了ステータスを3に
-	}
+    // ゲーム中（g_gameMode == 2）
+    if (g_gameMode == 2) {
+        // 約2.5秒ごとにLEDをシフト
+        if (cnt % 78750 == 0) {
+            PORTE.PODR.BYTE = ledShift;  // LEDの状態を変更
+            ledShift >>= 1;  // LEDを1ビットシフト
 
+            // LEDのシフトが終わったら、次に進む
+            if (ledShift == 0x00) {
+                g_gameMode = 3;  // ゲームモードを3に変更（終了）
+            }
 
+            cnt = 0;  // カウントリセット
+        }
+    }
 
-
-
-
+    cnt++;  // カウントアップ
+}
 	/*
 
 	cnt++;
@@ -45,8 +58,8 @@ void ledTime(void)
 	開始前カウントダウン
 	--------------------------------------
 	if(g_gameMode == 1 && cnt % 31500 == 0){
-		LEDシフト
-		ゲーム状態ステータスを2に
+
+        PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;
 		cnt = 0;
 	}
 
@@ -55,9 +68,10 @@ void ledTime(void)
 	ゲーム中カウントダウン
 	-------------------------------------
 	if(cnt % 78750 == 0){
-		LEDシフト
-		LEDが全消灯したらゲーム終了ステータスを3に
+		PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;
+		cnt = 0;
 	}
 
+	g_gamemode = 3;
 	*/
 }
