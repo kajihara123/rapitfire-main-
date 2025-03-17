@@ -81,25 +81,16 @@ void main(void)
 =======================================================================*/
 void Excep_ICU_IRQ13(void)
 {
-	signed char g_gameMode = 0;
+	int ret = 0;  // 戻り値用の変数
 	
 	switch (g_gameMode) {
-        case 0:
-            // ゲームモード0の場合の処理
-            ret = 0;
-            break;
-        case 1:
-            // ゲームモード1の場合の処理
-            ret = 1;
-            break;
-        case 2:
-            // ゲームモード2の場合の処理
-            ret = 2;
-            break;
-        default:
-            // 他のゲームモードの処理
-            ret = -1;
-            break;
+        int ret = 0;  // 戻り値用の変数
+
+		if ()
+		{
+			/* code */
+		}
+		
     }
 	
 	return ret;
