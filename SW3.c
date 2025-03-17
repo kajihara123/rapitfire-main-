@@ -45,7 +45,7 @@ void main(void)
 	int	d_sw3 = 1;				/* スイッチデータ */
 	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
-	signed char g_gameMode = 0;
+	
 							
 	
 	while (FOREVER) {
@@ -78,7 +78,7 @@ void main(void)
 =======================================================================*/
 void Excep_ICU_IRQ13(void)
 {
-	int	g_gameMode = 0;
+	signed char g_gameMode = 0;
 	
 	switch (g_gameMode) {
 		case 0:
