@@ -15,7 +15,7 @@ void ledTime(void)
     // ゲーム開始前のカウントダウン（g_gameMode == 1）
     if (g_gameMode == 1) {
         // cntが10000回進んだらLEDをシフト
-        if (cnt % 10000 == 0) {
+        if (cnt % 5000 == 0) {
             // 3, 2, 1 カウントダウン
             PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;  // LEDを1ビットシフト
 
@@ -32,7 +32,7 @@ void ledTime(void)
         // 約2.5秒ごとにLEDをシフト
         if(value == 0){}
         if(value > 0){
-            if (cnt % 10000 == 0) {
+            if (cnt % 12000 == 0) {
                 PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;  // LEDを1ビットシフト
 
                 // LEDのシフトが終わったら、次に進む
