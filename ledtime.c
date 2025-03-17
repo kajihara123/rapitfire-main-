@@ -21,4 +21,25 @@ void ledTime(void)
         	for(weight = 0; weight < 78750; weight++){}
         	PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;				/*約2.5秒ごとに１ビットシフト*/
 	}
+
+
+
+
+
+
+	/*
+
+	cnt++;
+
+	if(g_gameMode == 1 && cnt % 31500 == 0){
+		LEDシフト
+		ゲーム状態ステータスを2に
+	}
+
+	if(cnt % 78750 == 0){
+		LEDシフト
+		LEDが全消灯したらゲーム終了ステータスを2に
+	}
+		
+	*/
 }
