@@ -1,4 +1,25 @@
+/*=====================================================
+Project		: Renda game
+File		: ledTime.c
+Function	: ゲームスタート時の合図と時間計測
+Revision	: 1.00 2025/03/17
+Copyright(c):
+=====================================================*/
+
 #include "iodefine.h"
+
+/*=====================================================
+Func Name	: ledTime
+Function	: ゲーム状態ステータスに応じて合図と計測を行う
+Param Input	: None
+Param Output: None
+Return Val	: None
+Input Inf	: None
+Output Inf	: None
+Note		:
+Revision	: 1.00 2025/03/17
+=====================================================*/
+
 void ledTime(void)
 {
     static int cnt = 0;               /* カウントダウンと時間計測用変数 */
@@ -14,9 +35,8 @@ void ledTime(void)
     // ゲーム開始前のカウントダウン（g_gameMode == 1）
     if (g_gameMode == 1) {
         // cntが10000回進んだらLEDをシフト
-        if (cnt % 10000 == 0) {
+        if (cnt % 5000 == 0) {
             // 3, 2, 1 カウントダウン
-//            PORTE.PODR.BYTE = ledShift;  // LEDの状態を変更
             PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;  // LEDを1ビットシフト
 
             // カウントダウンが終わったら次に進む
@@ -30,41 +50,19 @@ void ledTime(void)
     // ゲーム中（g_gameMode == 2）
     if (g_gameMode == 2) {
         // 約2.5秒ごとにLEDをシフト
-        if (cnt % 10000 == 0) {
-            PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;  // LEDを1ビットシフト
+        if(value == 0){}
+        if(value > 0){
+            if (cnt % 12000 == 0) {
+                PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;  // LEDを1ビットシフト
 
-            // LEDのシフトが終わったら、次に進む
-            if (PORTE.PIDR.BYTE == 0x00) {
-                g_gameMode = 3;  // ゲームモードを3に変更（終了）
+                // LEDのシフトが終わったら、次に進む
+                if (PORTE.PIDR.BYTE == 0x00) {
+                    g_gameMode = 3;  // ゲームモードを3に変更
+                }
             }
         }
+        value++;
     }
 
     cnt++;  // カウントアップ
 }
-
-	/*
-
-	cnt++;
-
-	--------------------------------------
-	開始前カウントダウン
-	--------------------------------------
-	if(g_gameMode == 1 && cnt % 31500 == 0){
-
-        PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;
-		cnt = 0;
-	}
-
-
-	---------------------------------------
-	ゲーム中カウントダウン
-	-------------------------------------
-	if(cnt % 78750 == 0){
-		PORTE.PODR.BYTE = PORTE.PIDR.BYTE>>1;
-		cnt = 0;
-	}
-
-	g_gamemode = 3;
-	*/
-

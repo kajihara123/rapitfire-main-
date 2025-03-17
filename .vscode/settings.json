@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+<<<<<<< HEAD
+        "stdio.h": "c",
+        "sw4.h": "c"
+=======
+        "initbase.h": "c"
+>>>>>>> e65a21bc6e9727fe072a7777c066b67df042c2fc
+    }
+}

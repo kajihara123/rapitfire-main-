@@ -10,7 +10,7 @@
 /***** include *****/
 #include	"iodefine.h"
 #include    <stdio.h>
-#include	"initBASE.h"
+#include "SW3.h"
 
 /***** define *****/
 #define		FOREVER	1
@@ -18,7 +18,6 @@
 /***** prototype *****/
 void main(void);
 void sw3Clt(void);
-int getSW(int sw);
 /*=======================================================================
 関数名		: main関数
 機能		: メイン関数
@@ -42,35 +41,23 @@ int getSW(int sw);
 
 void main(void)
 {	
-	int	d_sw3 = 1;				/* スイッチデータ */
-	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
-	int	myDate = 0;			/* 対戦中自分の連打回数を保管 */
 	signed char g_gameMode = 0;		/* ゲームモード*/		
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
-	char g_playerNum = 0;
-	
+	char g_playerNum = 0;			/*現在のプレイヤー番号*/
+
+	PORT0.PDR.BYTE = 0;				
+	PORTJ.PDR.BIT.B3 = 1;			/*sw読み込み*/
+	PORTJ.PODR.BIT.B3 = 1;
 							
 	
 	while (FOREVER) {
-		
-		void sw3Clt(void);
-		d_sw3 = getSW(3);			/* スイッチ読み込み */
-			
-		if(d_sw3 == 0){				/* スイッチが押されているか？ 	*/
-		    if(egf_sw3 == 0){			/* スイッチのエッジ変化処理が完了しているか？ */
-		    	g_myDate = count++;			/* 押し下げ回数カウント*/
-			PORTE.PODR.BYTE = g_myDate;	 /*LED表示 			*/
-			egf_sw3 = 1;			/* スイッチのエッジ変化処理フラグを完了に設定 */
-			}
-			egf_sw3 = 0;			/* スイッチのエッジ変化処理フラグをクリア */							
-								
+		sw3Clt();					
 	}
-}
 }
 
 /*=======================================================================
 関数名		: void sw3Clt(void)
-機能		: 指定したスイッチの状態(status) 取得
+機能		: swの主な動作
 入力引数説明	: スイッチ番号
 出力引数説明	: None
 戻り値		: status 
@@ -85,41 +72,12 @@ void sw3Clt(void)
 			/*ゲームステータスを0にする*/
 			if (g_gameMode == 2){
 				g_myDate = g_myDate + 1;		
-				/*ゲームモードを2にする*/	
+			/*ゲームモードを2にする*/	
 			}	
 			if (g_gameMode == 3){
-				g_playerNum = 1;
+				g_playerNum = 1;	/*自分のプレーヤー番号の選択*/
 			}		
 	}
 }
 
-/*=======================================================================
-関数名		: int getSW(int sw)
-機能		: 指定したスイッチの状態(status) 取得
-入力引数説明	: スイッチ番号
-出力引数説明	: None
-戻り値		: status 
-入力情報	: None
-出力情報	: None
-特記事項	: 
-修正履歴	: 
-=======================================================================*/
-int getSW(int sw)
-{
-	int	ret = -1;
-	
-	switch (sw) {
-        case 3:
-            // スイッチ3の状態を読み取る。
-            ret = (SW3_PIN_STATUS == 0) ? 0 : 1;  // SW3が押されていれば0、押されていなければ1
-            break;
-        case 4:
-            // スイッチ4の状態を読み取る。
-            ret = (SW4_PIN_STATUS == 0) ? 0 : 1;  // SW4が押されていれば0、押されていなければ1
-            break;
-        default:
-            break;
-    }
-	
-	return ret;
-}
+
