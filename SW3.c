@@ -37,7 +37,6 @@ int getSW(int sw);
 //     signed char is_error : 3;        // エラーフラグ
 // } g_gameMode;
 
-signed char g_gameMode;
 
 
 
@@ -46,6 +45,7 @@ void main(void)
 	int	d_sw3 = 1;				/* スイッチデータ */
 	int	egf_sw3 = 0;				/* SW3 エッジ変化処理フラグ */
 	int	g_myDate = 0;				/* 対戦中自分の連打回数を保管 */
+	signed char g_gameMode = 0;
 							
 	
 	while (FOREVER) {
