@@ -1,4 +1,5 @@
 #include "iodefine.h"
+
 void ledTime(void)
 {
     static int cnt = 0;               /* カウントダウンと時間計測用変数 */
