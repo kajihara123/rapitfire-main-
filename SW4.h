@@ -1,5 +1,5 @@
-#ifndef IRQ15_H
-#define IRQ15_H
+#ifndef SW4_H
+#define SW4_H
 
 void Excep_ICU_IRQ15(void);
 
