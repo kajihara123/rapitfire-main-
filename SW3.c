@@ -81,7 +81,6 @@ void main(void)
 =======================================================================*/
 void Excep_ICU_IRQ13(void)
 {
-	int ret = 0;  // 戻り値用の変数
 	
 	switch (g_gameMode) {
         int ret = 0;  // 戻り値用の変数
