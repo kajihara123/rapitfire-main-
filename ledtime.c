@@ -24,7 +24,6 @@ Revision	: 1.00 2025/03/17
 void initLEDs(void){
 
     PORTJ.PDR.BIT.B3 = 1; 
-    PORTJ.PODR.BIT.B3 = 1;
     
     PORTE.PDR.BYTE = 0xFF;          /*ポートEを出力に設定*/
     PORTE.PODR.BYTE = 0x00;         /*初期状態: LEDは全て消灯*/
@@ -48,6 +47,7 @@ void ledTime(void)
 {
     static int cnt = 0;             /*カウントダウンと時間計測用変数*/
     static int ver = 0;             /*カウントダウン用の変数*/
+    PORTJ.PODR.BIT.B3 = 1;
 
     /*ゲーム開始前のカウントダウン（g_gameMode == 1）*/
     if (g_gameMode == 1) {                     
