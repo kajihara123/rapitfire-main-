@@ -1,6 +1,6 @@
 #include	"iodefine.h"
 #include    <stdio.h>
-#include    "switchdate3.h"
+#include    "switchdata3.h"
 
 
 void sw3Clt(void)
