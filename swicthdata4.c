@@ -4,9 +4,7 @@
 
 
 void sw4Clt(void){
-
-	/*相手のデータを読み込む*/
-
+	
     if (PORT0.PIDR.BIT.B7 == 0)
 	{
 		if (g_gameMode == 3)				/*ゲームステータスが３の時に以下の処理を行う*/
