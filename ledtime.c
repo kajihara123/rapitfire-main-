@@ -8,6 +8,7 @@ Copyright(c):
 
 #include "iodefine.h"
 #include "renda.h"
+#include "ledCtl.h"
 
 /*=====================================================
 Func Name	: initLEDs
