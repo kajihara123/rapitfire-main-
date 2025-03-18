@@ -9,6 +9,8 @@ signed char g_gameMode = 0; //ゲーム状態ステータス
 int g_myData = 0;		//自分の連打数
 int g_pairData = -1;		//相手の連打数
 char g_playerNum = 1;		//現在向いているプレイヤー
+int cnt = 0;             /*カウントダウンと時間計測用変数*/
+int ver = 0;             /*カウントダウン用の変数*/
 
 
 char g_hexNum[10] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};	//0~9の7セグ表示用16進数
