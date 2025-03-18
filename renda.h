@@ -10,4 +10,6 @@ extern char g_hexNum[10];
 extern char	g_digit[4];							
 extern char g_errorHex[3];
 
+extern int decision;
+
 #endif
