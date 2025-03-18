@@ -76,3 +76,27 @@ void ledTime(void)
 
     cnt++;  /*カウントアップ*/
 }
+
+/*=====================================================
+Func Name	: portSwitch
+Function	: ポートの設定を行う
+Param Input	: None
+Param Output: None
+Return Val	: None
+Input Inf	: None
+Output Inf	: None
+Note		: None
+Revision	: 1.00 2025/03/17
+=====================================================*/
+
+/*7SEG使用時にLEDの出力を切られているので再設定*/
+void portSwitch(void)
+{
+	PORTD.PDR.BYTE   = 0x00;			
+	
+	PORTJ.PDR.BIT.B3  	= 1;			
+	PORTE.PDR.BYTE 		= 0xFF;
+	
+	PORTJ.PODR.BIT.B3 	= 1;
+	PORTE.PODR.BYTE 	= 0x00;
+}
