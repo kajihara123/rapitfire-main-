@@ -6,8 +6,8 @@
 
 
 signed char g_gameMode = 0; //ゲーム状態ステータス
-int g_myDate = 0;		//自分の連打数
-int g_pairDate = -1;		//相手の連打数
+int g_myData = 0;		//自分の連打数
+int g_pairData = -1;		//相手の連打数
 char g_playerNum = 1;		//現在向いているプレイヤー
 
 

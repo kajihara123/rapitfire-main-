@@ -1,6 +1,6 @@
 #include "iodefine.h"
 #include <stdio.h>
-#include "switchdate4.h"
+#include "switchdata4.h"
 
 
 void sw4Clt(void){
@@ -11,7 +11,7 @@ void sw4Clt(void){
 	{
 		if (g_gameMode == 3)				/*ゲームステータスが３の時に以下の処理を行う*/
 		{
-		 if (g_pairDate == -1)
+		 if (g_pairData == -1)
 		 {
 		 	g_gameMode = -1; 				/*！ステータスを異常状態にする*/
 		 }
