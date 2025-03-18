@@ -26,6 +26,7 @@ void main(void)
 	initCMT0();
 	initCMT1();
 	init7SEG();
+	initLEDs();
 	
 	while(g_gameMode == 0){
 		waitCmt0();
