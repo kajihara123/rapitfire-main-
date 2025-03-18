@@ -6,7 +6,7 @@ Revision	: 1.00 2025/03/17
 Copyright(c):
 =====================================================*/
 #include	"iodefine.h"
-#include	"cmn.h"
+#include	"renda.h"
 
 void ledRes(void);
 int win_or_lose(void);
@@ -61,11 +61,11 @@ int win_or_lose(void)
 {
 	int res;
 	
-	if(g_myDate < g_pairDate) {				//g_myData‚ªg_pairData‚æ‚è¬‚³‚¢ê‡
+	if(g_myData < g_pairData) {				//g_myData‚ªg_pairData‚æ‚è¬‚³‚¢ê‡
 		res = 0;							//•‰‚¯
-	}else if(g_pairDate < g_myDate) {		//g_pairData‚ªg_myData‚æ‚è¬‚³‚¢ê‡
+	}else if(g_pairData < g_myData) {		//g_pairData‚ªg_myData‚æ‚è¬‚³‚¢ê‡
 		res = 1;							//Ÿ‚¿
-	}else if(g_myDate == g_pairDate) {		//g_myData‚Æg_pairData‚Ì”’l‚ª“¯‚¶ê‡
+	}else if(g_myData == g_pairData) {		//g_myData‚Æg_pairData‚Ì”’l‚ª“¯‚¶ê‡
 		res = 2;							//ˆø‚«•ª‚¯
 	}
 	return res;
