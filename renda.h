@@ -2,8 +2,8 @@
 #define RENDA_H
 
 extern signed char g_gameMode;
-extern int g_myDate;
-extern int g_pairDate;
+extern int g_myData;
+extern int g_pairData;
 extern char g_playerNum;
 
 extern char g_hexNum[10];	
