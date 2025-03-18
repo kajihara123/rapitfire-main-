@@ -1,14 +1,7 @@
 #include	"iodefine.h"
 #include	<stdio.h>
 #include	"7segLcd.h"
-
-
-static char g_hexNum[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
-static char	g_digit[4];
-static char g_errorHex[3] = {0x79, 0x50, 0x50};
-
-
-
+#include	"renda.h"
 
 
 void init7SEG(void)
