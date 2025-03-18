@@ -1,6 +1,6 @@
 #ifndef LEDTIME_H
 #define LEDTIME_H
 
-void main(void);
+void ledTime(void);
 
 #endif
