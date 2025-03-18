@@ -23,8 +23,6 @@ Revision	: 1.00 2025/03/17
 
 void ledRes(void)
 {
-	static int decision = -1;
-	
 	portSwitch();
 
 	if(decision == -1) {
