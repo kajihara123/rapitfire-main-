@@ -8,6 +8,30 @@ Copyright(c):
 
 #include "iodefine.h"
 #include "renda.h"
+#include "ledCtl.h"
+
+/*=====================================================
+Func Name	: initLEDs
+Function	: LEDの初期設定を行う
+Param Input	: None
+Param Output: None
+Return Val	: None
+Input Inf	: None
+Output Inf	: None
+Note		:
+Revision	: 1.00 2025/03/17
+=====================================================*/
+
+void initLEDs(void){
+
+    PORTJ.PDR.BIT.B3 = 1; 
+    PORTJ.PODR.BIT.B3 = 1;
+    
+    PORTE.PDR.BYTE = 0xFF;          /*ポートEを出力に設定*/
+    PORTE.PODR.BYTE = 0x00;         /*初期状態: LEDは全て消灯*/
+    PORTE.PODR.BYTE = 0x0F;     /*カウントダウン前の状態にする*/
+
+}
 
 /*=====================================================
 Func Name	: ledTime
@@ -25,13 +49,7 @@ void ledTime(void)
 {
     static int cnt = 0;             /*カウントダウンと時間計測用変数*/
     static int ver = 0;             /*カウントダウン用の変数*/
-    static int ledShift = 0x0F;     /*LEDの初期状態（3つのLEDが点灯）*/
-    PORTJ.PDR.BIT.B3 = 1; 
     PORTJ.PODR.BIT.B3 = 1;
-    
-    PORTE.PDR.BYTE = 0xFF;          /*ポートEを出力に設定*/
-    PORTE.PODR.BYTE = 0x00;         /*初期状態: LEDは全て消灯*/
-    PORTE.PODR.BYTE = ledShift;     /*カウントダウン前の状態にする*/
 
     /*ゲーム開始前のカウントダウン（g_gameMode == 1）*/
     if (g_gameMode == 1) {                     

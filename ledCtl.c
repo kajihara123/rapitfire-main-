@@ -7,10 +7,7 @@ Copyright(c):
 =====================================================*/
 #include	"iodefine.h"
 #include	"renda.h"
-
-void ledRes(void);
-int win_or_lose(void);
-void portSwitch(void);
+#include	"ledCtl.h"
 
 /*=====================================================
 Func Name	: ledRes
@@ -26,10 +23,11 @@ Revision	: 1.00 2025/03/17
 
 void ledRes(void)
 {
-	int decision = 0;
-	
 	portSwitch();
-	decision = win_or_lose();
+
+	if(decision == -1) {
+		decision = win_or_lose();
+	}
 
 	/*”»’èŒ‹‰Ê‚É‚æ‚Á‚ÄLED‚Ì“_“”êŠ‚ğŠÇ—*/
 	switch(decision) {

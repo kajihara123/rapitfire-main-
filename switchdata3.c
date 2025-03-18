@@ -1,7 +1,7 @@
 #include	"iodefine.h"
 #include    <stdio.h>
 #include    "switchdata3.h"
-
+#include    "renda.h"
 
 void sw3Clt(void)
 {
