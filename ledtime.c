@@ -26,6 +26,8 @@ void initLEDs(void){
 
     PORTJ.PDR.BIT.B3 = 1; 
     PORTJ.PODR.BIT.B3 = 1;
+
+    PORTD.PDR.BYTE   = 0x00;			
     
     PORTE.PDR.BYTE = 0xFF;          /*ポートEを出力に設定*/
     PORTE.PODR.BYTE = 0x00;         /*初期状態: LEDは全て消灯*/
@@ -76,3 +78,4 @@ void ledTime(void)
 
     cnt++;  /*カウントアップ*/
 }
+

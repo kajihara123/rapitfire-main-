@@ -40,6 +40,8 @@ void ledRes(void)
 		case 2:
 			PORTE.PODR.BYTE = 0xF0;
 			break;
+		default:
+		break;
 		}
 }
 
@@ -82,6 +84,8 @@ Revision	: 1.00 2025/03/17
 =====================================================*/
 
 /*7SEGégópéûÇ…LEDÇÃèoóÕÇêÿÇÁÇÍÇƒÇ¢ÇÈÇÃÇ≈çƒê›íË*/
+
+/*
 void portSwitch(void)
 {
 	PORTD.PDR.BYTE   = 0x00;			
@@ -92,3 +96,4 @@ void portSwitch(void)
 	PORTJ.PODR.BIT.B3 	= 1;
 	PORTE.PODR.BYTE 	= 0x00;
 }
+*/
