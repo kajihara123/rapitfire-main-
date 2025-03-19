@@ -2,13 +2,12 @@
 #define switchdata3_H
 
 /***** definition *****/
-#define	SW3	0x20
-#define	SW4	0x80
-#define	SW34	(SW3 | SW4)
+#define		C_TIME	10	
 
+void sw3Chatter(void);
 void sw3Clt(void);
 void initSWs(void);
-int getSW(int bit);
+void initCMT0(void);
 int getSWs(void);
 
 #endif
