@@ -2,6 +2,7 @@
 #define switchdata3_H
 
 /***** definition *****/
+#define		FOREVER	1
 #define		C_TIME	10	
 
 void sw3Chatter(void);

@@ -1,0 +1,89 @@
+Renesas Optimizing Linker (W3.01.00 )             19-Mar-2025 17:50:30
+
+*** Options ***
+
+-subcommand=DefaultBuild\en02_SW.clnk
+-library=DefaultBuild\en02_SW.lib
+-input=DefaultBuild\dbsct.obj
+-input=DefaultBuild\renda.obj
+-input=DefaultBuild\intprg.obj
+-input=DefaultBuild\resetprg.obj
+-input=DefaultBuild\sbrk.obj
+-input=DefaultBuild\vecttbl.obj
+-input=DefaultBuild\ledTime.obj
+-input=DefaultBuild\CMT.obj
+-input=DefaultBuild\7segLcd.obj
+-input=DefaultBuild\switchdata3.obj
+-input=DefaultBuild\initBASE.obj
+-noprelink
+-output=DefaultBuild\en02_SW.abs
+-list=DefaultBuild\en02_SW.map
+-nooptimize
+-start=B_1,R_1,B_2,R_2,B,R,SU,SI/04,PResetPRG/0FFF00000,C_1,C_2,C,C$DSEC,C$BSEC,C$INIT,C$VTBL,C$VECT,D_1,D_2,D,P,PIntPRG,W_1,W_2,W,L/0FFF00100,FIXEDVECT/0FFFFFFD0
+-rom=D=R,D_1=R_1,D_2=R_2
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+B_1
+                                  00000004  00000007         4   1
+R_1
+                                  00000008  00000015         e   1
+B_2
+                                  00000016  00000016         0   1
+R_2
+                                  00000016  00000016         0   1
+B
+                                  00000018  00000417       400   4
+R
+                                  00000418  00000433        1c   4
+SU
+                                  00000434  00000533       100   4
+SI
+                                  00000534  00000833       300   4
+PResetPRG
+                                  fff00000  fff0002f        30   1
+C_1
+                                  fff00100  fff00100         0   1
+C_2
+                                  fff00100  fff00100         0   1
+C
+                                  fff00100  fff00133        34   4
+C$DSEC
+                                  fff00134  fff00157        24   4
+C$BSEC
+                                  fff00158  fff0016f        18   4
+C$INIT
+                                  fff00170  fff00170         0   1
+C$VTBL
+                                  fff00170  fff00170         0   1
+C$VECT
+                                  fff00170  fff0056f       400   4
+D_1
+                                  fff00570  fff0057d         e   1
+D_2
+                                  fff0057e  fff0057e         0   1
+D
+                                  fff00580  fff0059b        1c   4
+P
+                                  fff0059c  fff009a0       405   1
+PIntPRG
+                                  fff009a1  fff00b3c       19c   1
+W_1
+                                  fff00b3d  fff00b3d         0   1
+W_2
+                                  fff00b3d  fff00b3d         0   1
+W
+                                  fff00b3d  fff00b3d         0   1
+L
+                                  fff00b3d  fff00b3d         0   1
+$ADDR_C_FFFFFF80
+                                  ffffff80  ffffff83         4   1
+$ADDR_C_FFFFFFA0
+                                  ffffffa0  ffffffaf        10   1
+FIXEDVECT
+                                  ffffffd0  ffffffff        30   4
